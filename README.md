@@ -6,7 +6,7 @@
 
 The project includes the engine core and the **Wrench** editor, a dedicated workspace for scene layout and entity manipulation, like Godot's node hierarchy meets the workflow and grit of Source/Hammer.
 
-### Current State
+# Current State
 This is an active development project. The foundation is being built, focusing on a robust scene-node architecture and a high-UX editor.
 
 * **Single-Project Architecture:** Everything (Engine + Wrench Editor) lives in one place.
@@ -15,7 +15,7 @@ This is an active development project. The foundation is being built, focusing o
 * **Assimp Integration:** Built to handle models (OBJ/FBX)
 
 
-### Roadmap
+# Roadmap
 - [x] OpenGL 4.1 Core Context
 - [x] Wrench Editor Shell & Framebuffer
 - [ ] Node-based Scene Graph
@@ -23,22 +23,22 @@ This is an active development project. The foundation is being built, focusing o
 - [ ] Mouse Picking / Selection
 - [ ] PBR-lite Shaders
 
-### 🛠️ Getting Started
+# 🛠️ Getting Started
 Visual Engine uses CMake and vcpkg in Manifest Mode.
 
-# Prerequisities
+## Prerequisities
     Visual Studio 2022+
     C++20 compiler.
     vcpkg installed and is available in your PATH.
     CMake 3.21+.
     
-# Clone the repository
+## Clone the repository
 ```
 git clone https://github.com/VisualBridge/VisualEngine.git
 cd VisualEngine
 ```
 
-# Build via CommandLine
+## Build via CommandLine
 Replace <VCPKG_PATH> with your actual vcpkg directory.
 ```
 cmake -S . -B build `
