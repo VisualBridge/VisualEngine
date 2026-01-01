@@ -17,7 +17,7 @@ Release/
 *.appx
 *.vsixmanifest
 *.sln.docstates
-.vcxproj0
+*.vcxproj0
 external/*/bin/
 external/*/obj/
 build/
