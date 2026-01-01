@@ -8,7 +8,7 @@ Everything is appreciated. If you want to help build this, just jump in.
 * **The Vision:** We are making a node-based engine that feels like Godot but hits like Source. If a feature makes it feel bloated or slow, we don't need it.
 
 ### How to Help
-If you see something that sucks, fix it. If you have a better way to handle the renderer or the math, open a PR. You don't need to write a thesis for your pull request—if the code makes the engine better, it's a win.
+If you see something that sucks, fix it. If you have a better way to handle the renderer or the math, open a PR. You don't need to write a thesis for your pull request, if the code makes the engine better, it's a win.
 
 
 
