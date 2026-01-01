@@ -2,7 +2,7 @@
 
 **VisualEngine** is a node-based 3D engine and level editor designed to be lean, fast, and powerful. 
 
-The project includes the engine core and the **Wrench** editor, a dedicated workspace for scene layout and entity manipulation. Think Godot's node hierarchy meets the workflow and grit of Source/Hammer.
+The project includes the engine core and the **Wrench** editor, a dedicated workspace for scene layout and entity manipulation, like Godot's node hierarchy meets the workflow and grit of Source/Hammer.
 
 ### Current State
 This is an active development project. The foundation is being built, focusing on a robust scene-node architecture and a high-UX editor.
