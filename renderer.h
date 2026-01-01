@@ -20,7 +20,7 @@ private:
     void DrawEntity(std::shared_ptr<Entity> ent, Shader& shader) {
         if (ent->meshModel) {
             shader.setMat4("model", ent->GetWorldTransform());
-            ent->meshModel->Draw();
+            ent->meshModel->Draw(shader);
         }
         for (auto& child : ent->Children) {
             DrawEntity(child, shader);

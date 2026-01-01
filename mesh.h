@@ -2,6 +2,7 @@
 #include <vector>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
+#include <string>
 
 struct Vertex {
     glm::vec3 Position;
@@ -9,19 +10,38 @@ struct Vertex {
     glm::vec2 TexCoords;
 };
 
+struct Texture {
+    unsigned int id;
+    std::string type;
+    std::string path;
+};
+
 class Mesh {
 public:
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
+    std::vector<Texture> textures;
     unsigned int VAO;
 
-    Mesh(std::vector<Vertex> v, std::vector<unsigned int> i) : vertices(v), indices(i) {
+    Mesh(std::vector<Vertex> v, std::vector<unsigned int> i, std::vector<Texture> t)
+        : vertices(v), indices(i), textures(t) {
         setupMesh();
     }
 
-    void Draw() {
+    void Draw(Shader& shader) {
+        unsigned int diffuseNr = 1;
+        for (unsigned int i = 0; i < textures.size(); i++) {
+            glActiveTexture(GL_TEXTURE0 + i);
+            std::string number;
+            std::string name = textures[i].type;
+            if (name == "texture_diffuse") number = std::to_string(diffuseNr++);
+            shader.setInt(("texture_" + name + number).c_str(), i);
+            glBindTexture(GL_TEXTURE_2D, textures[i].id);
+        }
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, (GLsizei)indices.size(), GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
+        glActiveTexture(GL_TEXTURE0);
     }
 
 private:
@@ -44,5 +64,6 @@ private:
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
         glEnableVertexAttribArray(2);
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, TexCoords));
+        glBindVertexArray(0);
     }
 };

@@ -10,17 +10,19 @@ int main() {
     GLFWwindow* window = glfwCreateWindow(1280, 720, "Visual Engine", NULL, NULL);
     glfwMakeContextCurrent(window);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
     WrenchEditor editor(window);
     Renderer renderer;
     Shader shader("default.vert", "default.frag");
-    Model crateModel("test_model.glb");
+    Model barrelModel("test_model.glb");
 
     std::vector<std::shared_ptr<Entity>> scene;
-    auto crate = std::make_shared<Entity>();
-    crate->Name = "Crate";
-    crate->meshModel = &crateModel;
-    scene.push_back(crate);
+    auto barrel = std::make_shared<Entity>();
+    barrel->Name = "Barrel";
+    barrel->meshModel = &barrelModel;
+    scene.push_back(barrel);
 
     Camera camera;
 
