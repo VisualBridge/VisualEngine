@@ -16,7 +16,7 @@ This is an active development project. The foundation is being built, focusing o
 ### Roadmap
 - [x] OpenGL 4.1 Core Context
 - [x] Wrench Editor Shell & Framebuffer
-- [] Node-based Scene Graph
+- [ ] Node-based Scene Graph
 - [ ] FPS-style Viewport Camera
 - [ ] Mouse Picking / Selection
 - [ ] PBR-lite Shaders
