@@ -41,8 +41,8 @@ endif()
 
 set(ASSET_FILES
     "test_model.glb"
-    "default.vert"
-    "default.frag"
+    "source/renderer/shaders/default.vert"
+    "source/renderer/shaders/default.frag"
     "thirdparty/stb_image.h"
 )
 
