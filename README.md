@@ -58,3 +58,4 @@ Open the repository folder in Visual Studio and click **ctrl shift b** on your k
 
 
 **Disclaimer:** This isn't a "release" yet. It’s a work-in-progress for those who like raw C++ and building tools from scratch.
+![](https://github-visitor-counter-tau.vercel.app/api?username=github&displayMode=topCountries&theme=transparent)
