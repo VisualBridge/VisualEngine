@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <string>
+#include "shader.h"
 
 struct Vertex {
     glm::vec3 Position;

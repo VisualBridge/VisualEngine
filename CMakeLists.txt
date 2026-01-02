@@ -12,14 +12,18 @@ find_package(glm CONFIG REQUIRED)
 find_package(assimp CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
 find_package(imguizmo CONFIG REQUIRED)
+find_package(Angelscript CONFIG REQUIRED)
 
 file(GLOB ENGINE_SOURCES
     CONFIGURE_DEPENDS
     "*.cpp"
     "*.h"
+    "source/**/*.cpp"
+    "source/**/*.h"
 )
 
-add_executable(${PROJECT_NAME} ${ENGINE_SOURCES})
+
+add_executable(${PROJECT_NAME} ${ENGINE_SOURCES} "source/components/component.h" "source/components/mesh_component.h" "source/components/camera_component.h" "source/components/script_component.h" "source/components/transform_component.h")
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     glfw
@@ -28,6 +32,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     assimp::assimp
     imgui::imgui
     imguizmo::imguizmo
+    Angelscript::angelscript
 )
 
 if (MSVC)
@@ -38,7 +43,7 @@ set(ASSET_FILES
     "test_model.glb"
     "default.vert"
     "default.frag"
-    "stb_image.h"
+    "thirdparty/stb_image.h"
 )
 
 foreach(FILE ${ASSET_FILES})

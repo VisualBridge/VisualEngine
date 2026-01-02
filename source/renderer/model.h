@@ -2,11 +2,12 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-#include "Mesh.h"
+#include "mesh.h"
+#include "shader.h"
 #include <string>
 #include <vector>
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "../../thirdparty/stb_image.h"
+#include <iostream>
 
 class Model {
 public:

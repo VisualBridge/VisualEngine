@@ -1,8 +1,8 @@
 #pragma once
 #include <glad/glad.h>
-#include "Entity.h"
-#include "Shader.h"
-#include "Model.h"
+#include "../core/entity.h"
+#include "../components/mesh_component.h"
+#include "shader.h"
 
 class Renderer {
 public:
@@ -18,9 +18,10 @@ public:
 
 private:
     void DrawEntity(std::shared_ptr<Entity> ent, Shader& shader) {
-        if (ent->meshModel) {
-            shader.setMat4("model", ent->GetWorldTransform());
-            ent->meshModel->Draw(shader);
+        auto mesh = ent->getComponent<MeshComponent>();
+        if (mesh && mesh->meshModel) {
+            shader.setMat4("model", ent->getWorldTransform());
+            mesh->meshModel->Draw(shader);
         }
         for (auto& child : ent->Children) {
             DrawEntity(child, shader);

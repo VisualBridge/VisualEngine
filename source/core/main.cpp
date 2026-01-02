@@ -1,9 +1,10 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "wrench_editor.h"
-#include "renderer.h"
-#include "model.h"
-#include "Camera.h"
+#include "../renderer/renderer.h"
+#include "../renderer/model.h"
+#include "../core/camera.h"
+#include "../editor/wrench_editor.h"
+#include "../components/mesh_component.h"
 
 int main() {
     glfwInit();
@@ -19,9 +20,12 @@ int main() {
     Model barrelModel("test_model.glb");
 
     std::vector<std::shared_ptr<Entity>> scene;
+
+    // Barrel Setup
     auto barrel = std::make_shared<Entity>();
     barrel->Name = "Barrel";
-    barrel->meshModel = &barrelModel;
+    auto mc = barrel->addComponent<MeshComponent>();
+    mc->meshModel = &barrelModel;
     scene.push_back(barrel);
 
     Camera camera;
@@ -32,8 +36,8 @@ int main() {
 
         glm::mat4 proj = camera.GetProjectionMatrix(1280.0f, 720.0f);
         renderer.RenderScene(scene, shader, camera.GetViewMatrix(), proj);
-        editor.EndUI(scene, camera, proj);
 
+        editor.EndUI(scene, camera, proj);
         glfwSwapBuffers(window);
     }
 
