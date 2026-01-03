@@ -14,6 +14,13 @@ find_package(imgui CONFIG REQUIRED)
 find_package(imguizmo CONFIG REQUIRED)
 find_package(Angelscript CONFIG REQUIRED)
 
+set(AS_ADDON_DIR "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include/angelscript")
+
+set(AS_ADDON_SOURCES
+    "${AS_ADDON_DIR}/scriptbuilder/scriptbuilder.cpp"
+    "${AS_ADDON_DIR}/scriptstdstring/scriptstdstring.cpp"
+)
+
 file(GLOB ENGINE_SOURCES
     CONFIGURE_DEPENDS
     "*.cpp"
@@ -22,8 +29,17 @@ file(GLOB ENGINE_SOURCES
     "source/**/*.h"
 )
 
-
-add_executable(${PROJECT_NAME} ${ENGINE_SOURCES} "source/components/component.h" "source/components/mesh_component.h" "source/components/camera_component.h" "source/components/script_component.h" "source/components/transform_component.h")
+add_executable(${PROJECT_NAME} 
+    ${ENGINE_SOURCES} 
+    ${AS_ADDON_SOURCES}
+    "source/components/component.h" 
+    "source/components/mesh_component.h" 
+    "source/components/camera_component.h" 
+    "source/components/script_component.h" 
+    "source/components/transform_component.h" 
+    "source/core/project_manager.h" 
+    "source/core/script_system.h"
+ "source/core/scene_manager.h" "source/core/common.h")
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     glfw
@@ -44,6 +60,8 @@ set(ASSET_FILES
     "source/renderer/shaders/default.vert"
     "source/renderer/shaders/default.frag"
     "thirdparty/stb_image.h"
+    "source/core/example_script.as"
+    "source/core/test_project.vep"
 )
 
 foreach(FILE ${ASSET_FILES})
